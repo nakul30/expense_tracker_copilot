@@ -9,8 +9,11 @@ const groq = new Groq({ apiKey: process.env.GROQ_API_KEY});
 
 const copilotKit = new CopilotRuntime();
 
-// Use cors middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://expensetrackerai.netlify.app/',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
 
 // Middleware for parsing JSON bodies
 app.use(express.json());
